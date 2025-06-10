@@ -22,6 +22,19 @@ def filter_by_income(scholarships, income):
             filtered.append(post)
     return filtered
 
+def parse_grade(grade_raw):
+    """
+    학년 문자열을 안전하게 정수로 변환하고, 유효하지 않으면 None 반환
+    """
+    try:
+        num = int(''.join(filter(str.isdigit, grade_raw)))  # 숫자만 추출 (ex. "3학년" → 3)
+        if 1 <= num <= 4:
+            return num
+    except:
+        pass
+    return None
+
+
 def filter_by_gpa(scholarships, gpa):
     filtered = []
     gpa = float(gpa)
@@ -38,6 +51,8 @@ def filter_by_gpa(scholarships, gpa):
         if gpa < 3.7 and "대통령과학장학금" in title:
             continue
         if gpa < 3.4 and ("인문100년장학금" in title or "예술체육비전장학금" in title):
+            continue
+        if (gpa < 3.3 or grade != 3) and "국가우수장학금(이공계)" in title:
             continue
 
         filtered.append(post)
