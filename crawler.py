@@ -150,4 +150,4 @@ def crawl_kosaf():
 
 
 def crawl_scholarships():
-    return crawl_yonsei() + crawl_kosaf()
+    return crawl_yonsei()# + crawl_kosaf()
