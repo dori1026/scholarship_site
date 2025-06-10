@@ -60,9 +60,12 @@ def result():
 
     age = int(user_info['age'])
     if age <= 18:
-        return render_template('result.html', posts=[], user=user_info, message="18세 이하에게 적합한 장학금이 없습니다.")
+        return render_template('result.html', posts=[], user=user_info, message="18세 이하에게 적합한 장학금이 없습니다.", kosaf_failed=False)
 
     scholarships = crawl_scholarships()
+
+    # KOSAF 실패 여부 체크
+    kosaf_failed = not any(post['source'] == "국가장학금" for post in scholarships)
 
     # 마감일 필터링
     if user_info['filter_closed'] == 'N':
@@ -92,7 +95,13 @@ def result():
     if int(user_info['income']) >= 5:
         filtered_scholarships = [post for post in filtered_scholarships if "우양재단 북평고" not in post['title']]
 
-    return render_template('result.html', posts=filtered_scholarships, user=user_info, message=None)
+    return render_template(
+        'result.html',
+        posts=filtered_scholarships,
+        user=user_info,
+        message=None,
+        kosaf_failed=kosaf_failed
+    )
 
 if __name__ == '__main__':
     app.run(debug=True)
