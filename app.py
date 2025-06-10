@@ -52,7 +52,7 @@ def filter_by_gpa(scholarships, gpa):
             continue
         if gpa < 3.4 and ("인문100년장학금" in title or "예술체육비전장학금" in title):
             continue
-        if (gpa < 3.3 or grade != 3) and "국가우수장학금(이공계)" in title:
+        if gpa < 3.3 and "국가우수장학금(이공계)" in title:
             continue
 
         filtered.append(post)
