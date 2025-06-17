@@ -72,6 +72,7 @@ def filter_by_income(scholarships, income):
         if "강원인재원 주거비" in title and income > 5:
             continue
         if "포스코비전장학생" in title and income > 5:
+            continue
 
         filtered.append(post)
 
