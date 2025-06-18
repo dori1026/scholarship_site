@@ -140,7 +140,7 @@ def filter_by_gpa(scholarships, gpa):
 
         if gpa < 2.0 and ("국가근로장학금" in title or "다문화가정장학금 신청안내" in title or "고졸 후학습자 장학사업(희망사다리Ⅱ유형)" in title or "중소기업 취업연계 장학사업" in title or "(재)연세동문장학회 제24기" in title or " 삼다수 장학생" in title):
             continue
-        if gpa < 3.0 and ("지역인재장학금" in title or "상반기 강화군 대학생 등록금" in title or "성남시 다자녀가구 대학생" in title or "포스코비전장학생" in title or "대학배정(진리, 자유)" in tilte):
+        if gpa < 3.0 and ("지역인재장학금" in title or "상반기 강화군 대학생 등록금" in title or "성남시 다자녀가구 대학생" in title or "포스코비전장학생" in title or "대학배정(진리, 자유)" in title):
             continue
         if gpa < 3.5 and ("어학우수장학금" in title or "한경범장학회 장학금" in title or "청파장학회 장학금" in title):
             continue
